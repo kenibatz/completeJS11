@@ -34,3 +34,11 @@ const monthlyExpenses = monthlyExpensesUSD.map((expense, index) => {
 */
 
 console.log(`monthly expenses converted: ${monthlyExpenses}`);
+
+//Filter
+console.log(`\n*** Filters creates a new array based on a condition`);
+
+//Reduce
+console.log(
+  `\n*** Reduce adds the elements of an array and returns a single value`
+);
