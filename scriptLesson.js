@@ -64,7 +64,38 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 /* Functions */
 
-// const displayMovements = function (flow) {};
+// lesson 150, using the map Method
+// map returns a new array
+
+const movementsArr = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const eurToUsd = 1.1;
+
+/*
+const convertedMovements = movementsArr.map(function (movement) {
+  return movement * eurToUsd;
+});
+*/
+
+//arrow version
+const convertedMovements = movementsArr.map(movement => movement * eurToUsd);
+
+console.log(convertedMovements);
+
+const movementsDescriptions = movementsArr.map((movement, index) => {
+  /*
+  if (movement > 0) {
+    return `Movement: ${index + 1}: You deposited ${movement}}`;
+  } else {
+    return `Movement: ${index + 1}: You withdrew ${movement}`;
+  }
+  */
+  //using a ternary op
+  return `Movement ${index + 1}: You ${
+    movement > 0 ? `deposited` : `withdrew`
+  } ${Math.abs(movement)} `;
+});
+
+console.log(movementsDescriptions);
 
 // lesson 151, mapping the usernames
 /*
