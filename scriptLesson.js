@@ -157,6 +157,34 @@ const createUsernames = function (accounts) {
 createUsernames(accounts);
 console.dir(accounts);
 
+/* 152 filter */
+console.log(`\n*** L152: Filter method`);
+console.log(`movements array: ${movementsArr}`);
+const despositsArr = movementsArr.filter(function (mov) {
+  return mov > 0;
+});
+console.log(`deposits array: ${despositsArr}`);
+// const withdrawalsArr = movementsArr.filter(function (mov) {
+//   return mov < 0;
+// });
+
+const withdrawalsArr = movementsArr.filter(mov => mov < 0);
+console.log(`withdrawals array: ${withdrawalsArr}`);
+
+/* 153 reduce */
+console.log(`\n*** L153: Reduce method`);
+console.log(`movements array: ${movementsArr}`);
+const balance = movementsArr.reduce(function (accumulator, el, i, arr) {
+  console.log(`index ${i}: ${accumulator}`);
+  return accumulator + el;
+}, 0);
+console.log(`\nBalance: ${balance}`);
+
+//arrow
+//the initial value is set to '1' to test
+const balanceArrow = movementsArr.reduce((acc, el) => acc + el, 1);
+console.log(`\nbalanceArrow: ${balanceArrow}`);
+
 /* Event Handlers */
 btnLogin.addEventListener('click', function (event) {
   console.log(`btnLogin clicked`);
