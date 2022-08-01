@@ -62,13 +62,34 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const movementsArr = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const eurToUsd = 1.1;
+
+// lesson 147 Creating DOM Elements
+
+const displayMovements = function (movementsArr) {
+  containerMovements.innerHTML = '';
+  movementsArr.forEach(function (mov, i) {
+    const moveType = mov > 0 ? `deposit` : `withdrawal`;
+    const html = `
+    <div class="movements__row">
+      <div class="movements__type movements__type--${moveType}">${
+      i + 1
+    } ${moveType}</div>
+      <div class="movements__value">${mov}€</div>
+    </div>    
+    `;
+    console.log(html);
+    containerMovements.insertAdjacentHTML('afterBegin', html);
+  });
+};
+
+displayMovements(movementsArr);
+
 /* Functions */
 
 // lesson 150, using the map Method
 // map returns a new array
-
-const movementsArr = [200, 450, -400, 3000, -650, -130, 70, 1300];
-const eurToUsd = 1.1;
 
 /*
 const convertedMovements = movementsArr.map(function (movement) {
