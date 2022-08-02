@@ -213,6 +213,37 @@ const calculateBalance = function (movements) {
 
 calculateBalance(account1.movements);
 
+/* 155 The Magic of Chaining */
+const calculateSummary = function (movements) {
+  const incomeSummary = movements
+    .filter(mov => mov > 0)
+    .reduce((mov, acc) => mov + acc, 0);
+  // return incomeSummary;
+  labelSumIn.textContent = `${incomeSummary} €`;
+
+  const withdrawalSummary = movements
+    .filter(mov => mov < 0)
+    .reduce((mov, acc) => mov + acc, 0);
+
+  labelSumOut.textContent = `${Math.abs(withdrawalSummary)} €`;
+
+  const interestSummary = movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * 1.2) / 100)
+    .filter((interest, index, arr) => {
+      console.log(arr);
+      return interest >= 1;
+    })
+    .reduce((acc, interest) => acc + interest, 0);
+
+  labelSumInterest.textContent = `${interestSummary} €`;
+};
+
+// const incomeSummary = calculateIncomeSummary(account1.movements);
+// console.log(`income summary: ${incomeSummary}`);
+// labelSumIn.textContent = `${incomeSummary} €`;
+calculateSummary(account1.movements);
+
 /* Event Handlers */
 btnLogin.addEventListener('click', function (event) {
   console.log(`btnLogin clicked`);
