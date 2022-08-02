@@ -193,6 +193,7 @@ const withdrawalsArr = movementsArr.filter(mov => mov < 0);
 console.log(`withdrawals array: ${withdrawalsArr}`);
 
 /* 153 reduce */
+/*
 console.log(`\n*** L153: Reduce method`);
 console.log(`movements array: ${movementsArr}`);
 const balance = movementsArr.reduce(function (accumulator, el, i, arr) {
@@ -200,11 +201,17 @@ const balance = movementsArr.reduce(function (accumulator, el, i, arr) {
   return accumulator + el;
 }, 0);
 console.log(`\nBalance: ${balance}`);
+*/
 
 //arrow
-//the initial value is set to '1' to test
-const balanceArrow = movementsArr.reduce((acc, el) => acc + el, 1);
-console.log(`\nbalanceArrow: ${balanceArrow}`);
+const calculateBalance = function (movements) {
+  const balanceArrow = movements.reduce((acc, el) => acc + el, 0);
+  console.log(`\nbalanceArrow: ${balanceArrow}`);
+
+  labelBalance.textContent = `${balanceArrow} €`;
+};
+
+calculateBalance(account1.movements);
 
 /* Event Handlers */
 btnLogin.addEventListener('click', function (event) {
